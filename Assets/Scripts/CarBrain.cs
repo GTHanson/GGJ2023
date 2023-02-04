@@ -142,7 +142,7 @@ public class CarBrain : MonoBehaviour
 
         
 
-        var eastCarGameObject = Instantiate(EastCarPrefab, transform.position - new Vector3(-20, 0, 0), new Quaternion());
+        var eastCarGameObject = Instantiate(EastCarPrefab, transform.position - new Vector3(-22, 0, 0), new Quaternion());
         eastCarGameObject.transform.parent = transform.parent;
         EastCar = eastCarGameObject.GetComponent<CarBrain>();
         EastCar.Setup(this, false);
@@ -158,7 +158,7 @@ public class CarBrain : MonoBehaviour
         if (carList.Length >= 50) return;
 
 
-        var westCarGameObject = Instantiate(WestCarPrefab, transform.position - new Vector3(20, 0, 0), new Quaternion());
+        var westCarGameObject = Instantiate(WestCarPrefab, transform.position - new Vector3(22, 0, 0), new Quaternion());
         westCarGameObject.transform.parent = transform.parent;
         WestCar = westCarGameObject.GetComponent<CarBrain>();
         WestCar.Setup(this, true);

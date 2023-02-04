@@ -35,6 +35,10 @@ public class Player : MonoBehaviour
         {
             Money += 10;
         }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Money += 100000000;
+        }
     }
 
     public void Interact()
