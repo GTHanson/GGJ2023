@@ -397,7 +397,7 @@ MonoBehaviour:
   MouseSensitivity: 2
   VerticalClampAngle: 40
   HoriztonalClampAngle: 60
-  CarrotPrefab: {fileID: 2993311515644084974, guid: ebb696b543f20844fbe843ec660fa584, type: 3}
+  CarrotPrefab: {fileID: 4623140374748176619, guid: 049a075e7db1b5448b63eb14331c081c, type: 3}
 --- !u!95 &6797905191961485111
 Animator:
   serializedVersion: 5

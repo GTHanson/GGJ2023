@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Onion
       objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
 --- !u!4 &1420327915281143087 stripped

@@ -7,14 +7,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField]
     private StarterAssetsInputs _input;
+    private MainUI mainUI;
 
     public int Money
     {
         get => internalMoney;
         set
         {
-            OnMoneySet(value);
             internalMoney = value;
+            OnMoneySet();
         }
     }
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         InteractableManager.PlayerTransform = transform;
+        mainUI = FindFirstObjectByType<MainUI>();
     }
 
 
@@ -46,8 +48,8 @@ public class Player : MonoBehaviour
         InteractableManager.Interact();
     }
 
-    private void OnMoneySet(int value)
+    private void OnMoneySet()
     {
-
+        mainUI.UpdateMoney(Money);
     }
 }

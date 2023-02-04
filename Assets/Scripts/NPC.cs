@@ -13,11 +13,13 @@ public class NPC : MonoBehaviour
     private Vector3 moveDirection = Vector3.forward;
     private CharacterController cc;
     private Rigidbody rb;
+    private Player player;
 
     private void Start()
     {
         cc = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
+        player = FindFirstObjectByType<Player>();
     }
 
     private void Update()
@@ -35,6 +37,13 @@ public class NPC : MonoBehaviour
             rb.AddForce(collision.relativeVelocity, ForceMode.Impulse);
 
             Instantiate(hitParticlesPrefab, collision.GetContact(0).point, Quaternion.identity);
+
+            // veggies dont have gravity until they hit 
+            collision.rigidbody.useGravity = true;
+
+            // veg
+            VeggieBase veg = collision.transform.GetComponentInChildren<VeggieBase>();
+            player.Money += veg.Value;
         }
     }
 }

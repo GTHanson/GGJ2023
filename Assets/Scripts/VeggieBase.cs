@@ -14,5 +14,22 @@ public class VeggieBase : MonoBehaviour
     public VeggieType Type;
     public GameObject Root;
 
-    //hi griffd
+    [HideInInspector]
+    public int Value;
+
+    private void OnValidate()
+    {
+        switch(Type)
+        {
+            case VeggieType.Carrot:
+                Value = 4;
+                break;
+            case VeggieType.Onion:
+                Value = 40;
+                break;
+            case VeggieType.Turnip:
+                Value = 100;
+                break;
+        }
+    }
 }
