@@ -86,7 +86,7 @@ public class Cannon : MonoBehaviour
     {
         if (interacting == false) return;
 
-        if (playerInput.actions["Fire"].WasPressedThisFrame())
+        if (playerInput.actions["Fire"].IsPressed())
         {
             Fire();
         }
@@ -129,9 +129,9 @@ public class Cannon : MonoBehaviour
         // wait a sec
         yield return new WaitForSeconds(0.2f);
 
-        GameObject shotObject = Instantiate(CarrotPrefab, shootPoint.position, Quaternion.identity);
+        GameObject shotObject = Instantiate(CarrotPrefab, shootPoint.position, rotatePivot.rotation);
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
-        rigidbody.useGravity = false;
+        //rigidbody.useGravity = false;
         rigidbody.AddForce(rotatePivot.forward * ShootForce, ForceMode.Impulse);
 
         // cooldown

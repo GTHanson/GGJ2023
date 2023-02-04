@@ -393,11 +393,11 @@ MonoBehaviour:
   muzzleParticle: {fileID: 9179073505938332364}
   animator: {fileID: 6797905191961485111}
   ShootForce: 100
-  CooldownTime: 1
+  CooldownTime: 0.01
   MouseSensitivity: 10
   VerticalClampAngle: 40
   HoriztonalClampAngle: 60
-  CarrotPrefab: {fileID: 265638697622640388, guid: 7c9db14eebfe22a42a70a1995e12e941, type: 3}
+  CarrotPrefab: {fileID: 2993311515644084974, guid: ebb696b543f20844fbe843ec660fa584, type: 3}
 --- !u!95 &6797905191961485111
 Animator:
   serializedVersion: 5
