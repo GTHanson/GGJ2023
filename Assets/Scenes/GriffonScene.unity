@@ -654,12 +654,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4273894947265359398, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: VerticalClampAngle
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4273894947265359398, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: HoriztonalClampAngle
-      value: 60
+      propertyPath: RecoilAmount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4273894947265359399, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
       propertyPath: m_RootOrder
@@ -708,26 +704,6 @@ PrefabInstance:
     - target: {fileID: 4273894947265359416, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
       propertyPath: m_Name
       value: Cannon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563893829823848624, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563893829823848624, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563893829823848624, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563893829823848624, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7563893829823848624, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 257875b5929c1b341982a91a1091c4df, type: 3}

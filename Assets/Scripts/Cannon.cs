@@ -16,13 +16,19 @@ public class Cannon : MonoBehaviour
     private Transform rotatePivot;
     [SerializeField]
     private Transform shootPoint;
+    [SerializeField]
+    private ParticleSystem muzzleParticle;
+    [SerializeField]
+    private Animator animator;
 
     private ThirdPersonController playerController;
     private StarterAssetsInputs inputs;
     private PlayerInput playerInput;
     bool interacting = false;
 
+    [Header("Settings")]
     public float ShootForce;
+    public float CooldownTime;
 
     [Header("Rotation Stuff")]
     public float MouseSensitivity;
@@ -35,6 +41,7 @@ public class Cannon : MonoBehaviour
     [Header("Veggie Prefabs")]
     public GameObject CarrotPrefab;
 
+    private bool canFire = true;
 
     private void Start()
     {
@@ -106,10 +113,29 @@ public class Cannon : MonoBehaviour
 
     public void Fire()
     {
+        if (canFire == false) return;
+        canFire = false;
+        StartCoroutine(FireRoutine());
+    }
+
+    private IEnumerator FireRoutine()
+    {
+        // particles
+        muzzleParticle.Play();
+
+        // animation
+        animator.SetTrigger("Fire");
+
+        // wait a sec
+        yield return new WaitForSeconds(0.2f);
+
         GameObject shotObject = Instantiate(CarrotPrefab, shootPoint.position, Quaternion.identity);
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.AddForce(rotatePivot.forward * ShootForce, ForceMode.Impulse);
-    }
 
+        // cooldown
+        yield return new WaitForSeconds(CooldownTime);
+        canFire = true;
+    }
 }
