@@ -88,7 +88,7 @@ public class Cannon : MonoBehaviour
     {
         if (interacting == false) return;
 
-        if (playerInput.actions["Fire"].WasPressedThisFrame())
+        if (playerInput.actions["Fire"].IsPressed())
         {
             Fire();
         }

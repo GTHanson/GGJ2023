@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8750983003096180110}
   - component: {fileID: 8012858887759333370}
   - component: {fileID: 5095984184298686816}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5297786386416336518}
   - component: {fileID: 8793952263182874994}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2504476769507940436}
   - component: {fileID: -6226671479652446933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 3981320977888630879}
   - component: {fileID: 1338355738912349603}
   - component: {fileID: 3731247394086809774}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
