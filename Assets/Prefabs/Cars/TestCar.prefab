@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1710404204023123189, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: EastCarPrefab
+      value: 
+      objectReference: {fileID: 3201913388812089873}
+    - target: {fileID: 1710404204023123189, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: WestCarPrefab
+      value: 
+      objectReference: {fileID: 3201913388812089873}
+    - target: {fileID: 1710404204023123189, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: LoadEastCarOnStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710404204023123189, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: LoadWestCarOnStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4620453308237179818, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +69,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4620453308237179819, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
       propertyPath: m_Name
-      value: DefaultCar
+      value: TestCar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+--- !u!1 &3201913388812089873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4620453308237179819, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+  m_PrefabInstance: {fileID: 7813849319738921402}
+  m_PrefabAsset: {fileID: 0}
