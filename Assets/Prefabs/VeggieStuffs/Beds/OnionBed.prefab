@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5493485670187532635
+--- !u!1001 &876954508263665360
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,16 +8,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: plotCost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: VeggiePrefab
       value: 
-      objectReference: {fileID: 4623140374748176619, guid: 049a075e7db1b5448b63eb14331c081c, type: 3}
+      objectReference: {fileID: 7806308694210258983, guid: cfccaccb0d3272349a8281335bf76c3d, type: 3}
     - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: secondsPerVeggie
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5173895021470867315, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d78bbdaa0f086a47b9500b32ea7d383, type: 2}
+    - target: {fileID: 5173895022118726969, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d78bbdaa0f086a47b9500b32ea7d383, type: 2}
+    - target: {fileID: 5173895022525756195, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d78bbdaa0f086a47b9500b32ea7d383, type: 2}
+    - target: {fileID: 5173895023024316589, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d78bbdaa0f086a47b9500b32ea7d383, type: 2}
     - target: {fileID: 5173895023037836905, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: m_Name
-      value: CarrotBed
+      value: OnionBed
       objectReference: {fileID: 0}
     - target: {fileID: 5173895023037836906, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: m_RootOrder

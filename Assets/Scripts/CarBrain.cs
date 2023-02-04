@@ -22,12 +22,17 @@ public class CarBrain : MonoBehaviour
     [SerializeField]
     private bool LoadWestCarOnStart;
 
+    [HideInInspector]
+    public DoorBrain EastDoor;
+    [HideInInspector]
+    public DoorBrain WestDoor;
+
     #endregion
 
     #region State
 
-    private CarBrain WestCar = null;
-    private CarBrain EastCar = null;
+    public CarBrain WestCar = null;
+    public CarBrain EastCar = null;
 
     private TrainBrain trainBrain;
 
@@ -44,8 +49,16 @@ public class CarBrain : MonoBehaviour
 
     private void Setup(CarBrain ParentCar, bool ParentToEast)
     {
-        if (ParentToEast) EastCar = ParentCar;
-        else WestCar = ParentCar;
+        if (ParentToEast)
+        {
+            EastCar = ParentCar;
+            EastDoor.Open();
+        }
+        else
+        {
+            WestCar = ParentCar;
+            WestDoor.Open();
+        }
 
     }
 
@@ -120,30 +133,38 @@ public class CarBrain : MonoBehaviour
 
     #region Helper
 
-    private void LoadEastCar()
+    public void LoadEastCar()
     {
         if (EastCar != null) return;
 
         var carList = FindObjectsByType<CarBrain>(FindObjectsSortMode.None);
         if (carList.Length >= 50) return;
 
+        
+
         var eastCarGameObject = Instantiate(EastCarPrefab, transform.position - new Vector3(-20, 0, 0), new Quaternion());
         eastCarGameObject.transform.parent = transform.parent;
         EastCar = eastCarGameObject.GetComponent<CarBrain>();
         EastCar.Setup(this, false);
+
+        EastDoor.Open();
     }
 
-    private void LoadWestCar()
+    public void LoadWestCar()
     {
         if (WestCar != null) return;
 
         var carList = FindObjectsByType<CarBrain>(FindObjectsSortMode.None);
         if (carList.Length >= 50) return;
 
+
         var westCarGameObject = Instantiate(WestCarPrefab, transform.position - new Vector3(20, 0, 0), new Quaternion());
         westCarGameObject.transform.parent = transform.parent;
         WestCar = westCarGameObject.GetComponent<CarBrain>();
-        WestCar.Setup(this, false);
+        WestCar.Setup(this, true);
+
+        WestDoor.Open();
+
     }
 
     #endregion

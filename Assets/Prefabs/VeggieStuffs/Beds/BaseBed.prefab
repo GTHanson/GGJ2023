@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 5173895021340984409}
   - component: {fileID: 5173895021340984408}
   - component: {fileID: 5173895021340984415}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SoonTM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,8 +353,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5173895021340984413}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 5173895021505507205}
   - component: {fileID: 5173895021505507204}
   - component: {fileID: 5173895021505507227}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Gettingthere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,8 +630,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5173895021505507225}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 5173895022494997668}
   - component: {fileID: 5173895022494997691}
   - component: {fileID: 5173895022494997690}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: baby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,8 +1138,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5173895022494997688}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1707,6 +1707,7 @@ MonoBehaviour:
   AnimBrain: {fileID: 5173895022817787138}
   VeggiePool: {fileID: 754562252710582829}
   VeggiePrefab: {fileID: 5529507882089031660, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+  state: 0
 --- !u!1 &5173895023215248251
 GameObject:
   m_ObjectHideFlags: 0
