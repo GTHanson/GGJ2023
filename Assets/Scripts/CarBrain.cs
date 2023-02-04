@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 public class CarBrain : MonoBehaviour
@@ -81,15 +82,27 @@ public class CarBrain : MonoBehaviour
         if (EastCar == null) return;
 
         //get player
-        //tell player to go to eastcar.westentrypoint
+        var playerController = FindFirstObjectByType<ThirdPersonController>();
+
+        if (playerController)
+        {
+            //tell player to go to eastcar.westentrypoint
+            playerController.JumpToPoint(EastCar.GetWestEntryPosition(), 5f, 1f);
+        }
     }
 
     public void PlayerTriggeredWestDoor()
     {
-        if (EastCar == null) return;
+        if (WestCar == null) return;
 
         //get player
-        //tell player to go to eastcar.westentrypoint
+        var playerController = FindFirstObjectByType<ThirdPersonController>();
+
+        if (playerController)
+        {
+            //tell player to go to eastcar.westentrypoint
+            playerController.JumpToPoint(WestCar.GetEastEntryPosition(), 5f, 1f);
+        }
     }
 
     #endregion
