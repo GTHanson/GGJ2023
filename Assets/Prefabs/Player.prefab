@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7234937299596272874}
   - component: {fileID: 8010911465833283162}
+  - component: {fileID: 7999172282307221998}
   - component: {fileID: 8010911465833283163}
   - component: {fileID: 8010911465833283164}
   - component: {fileID: 6328903976959655050}
@@ -137,6 +138,18 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &7999172282307221998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010911465833283152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1f25e8489301a479bb958453074211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8010911465833283163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,19 +168,12 @@ MonoBehaviour:
   SpeedChangeRate: 10
   JumpHeight: 1.2
   Gravity: -15
-  JumpTimeout: 0.5
-  FallTimeout: 0.15
   Grounded: 1
   GroundedOffset: -0.14
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
     m_Bits: 513
-  CinemachineCameraTarget: {fileID: 0}
-  TopClamp: 70
-  BottomClamp: -30
-  CameraAngleOverride: 0
-  LockCameraPosition: 0
 --- !u!114 &8010911465833283164
 MonoBehaviour:
   m_ObjectHideFlags: 0

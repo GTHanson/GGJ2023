@@ -48,7 +48,6 @@ namespace StarterAssets
 		private float _targetRotation = 0.0f;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-        private float _terminalVelocity = 53.0f;
 
 		private Animator _animator;
 		private CharacterController _controller;
