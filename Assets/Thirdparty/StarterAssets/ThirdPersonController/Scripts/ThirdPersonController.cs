@@ -57,7 +57,7 @@ namespace StarterAssets
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
-        private bool canMove = true;
+        public bool CanMove = true;
 
 		private void Awake()
 		{
@@ -92,7 +92,7 @@ namespace StarterAssets
         {
             if (jumpRoutine != null) return;
             jumpRoutine = StartCoroutine(ArcMovement(target, speed, arcHeight));
-            canMove = false;
+            CanMove = false;
         }
 
         private IEnumerator ArcMovement(Vector3 target, float speed, float arcHeight)
@@ -127,7 +127,7 @@ namespace StarterAssets
 
             gameObject.layer = LayerMask.NameToLayer("Player");
 
-            canMove = true;
+            CanMove = true;
             jumpRoutine = null;
         }
 
@@ -165,7 +165,7 @@ namespace StarterAssets
 
 		private void Move()
 		{
-            if (canMove == false) return;
+            if (CanMove == false) return;
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 

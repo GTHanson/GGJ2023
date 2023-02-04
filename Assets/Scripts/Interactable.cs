@@ -64,6 +64,17 @@ public class Interactable : MonoBehaviour
         InteractableManager.AddInteractable(this);
     }
 
+    private void OnDisable()
+    {
+        worldUI.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        if (interactEnabled)
+            worldUI.SetActive(true);
+    }
+
     public void EnableInteraction()
     {
         interactEnabled = true;
