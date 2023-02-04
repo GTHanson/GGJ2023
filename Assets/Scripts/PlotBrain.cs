@@ -20,6 +20,8 @@ public class PlotBrain : MonoBehaviour
 
     public PlotAnimBrain AnimBrain;
 
+    public GameObject VeggiePrefab;
+
     #endregion
 
     #region State
