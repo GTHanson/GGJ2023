@@ -751,6 +751,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2993311515644084974, guid: ebb696b543f20844fbe843ec660fa584, type: 3}
     - target: {fileID: 4273894947265359398, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
+      propertyPath: CooldownTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273894947265359398, guid: 257875b5929c1b341982a91a1091c4df, type: 3}
       propertyPath: RecoilAmount
       value: 5
       objectReference: {fileID: 0}
