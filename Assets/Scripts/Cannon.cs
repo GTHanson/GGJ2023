@@ -18,8 +18,8 @@ public class Cannon : MonoBehaviour
     private Transform shootPoint;
     [SerializeField]
     private ParticleSystem muzzleParticle;
-    [SerializeField]
     private Animator animator;
+    private AudioSource fireClip;
 
     private ThirdPersonController playerController;
     private StarterAssetsInputs inputs;
@@ -49,6 +49,8 @@ public class Cannon : MonoBehaviour
         playerController = FindFirstObjectByType<ThirdPersonController>();
         inputs = FindFirstObjectByType<StarterAssetsInputs>();
         playerInput = FindFirstObjectByType<PlayerInput>();
+        animator = GetComponent<Animator>();
+        fireClip = GetComponent<AudioSource>();
 
         Vector3 rot = rotatePivot.transform.localRotation.eulerAngles;
         rotY = rot.y;
@@ -86,7 +88,7 @@ public class Cannon : MonoBehaviour
     {
         if (interacting == false) return;
 
-        if (playerInput.actions["Fire"].IsPressed())
+        if (playerInput.actions["Fire"].WasPressedThisFrame())
         {
             Fire();
         }
@@ -120,6 +122,9 @@ public class Cannon : MonoBehaviour
 
     private IEnumerator FireRoutine()
     {
+        // fire
+        fireClip.Play();
+
         // particles
         muzzleParticle.Play();
 
@@ -131,7 +136,7 @@ public class Cannon : MonoBehaviour
 
         GameObject shotObject = Instantiate(CarrotPrefab, shootPoint.position, rotatePivot.rotation);
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
-        //rigidbody.useGravity = false;
+        rigidbody.useGravity = false;
         rigidbody.AddForce(rotatePivot.forward * ShootForce, ForceMode.Impulse);
 
         // cooldown
