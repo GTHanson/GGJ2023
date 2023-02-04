@@ -9,7 +9,7 @@ public class Cannon : MonoBehaviour
 
     public void StartInteraction()
     {
-
+        Debug.Log("Canon start");
     }
 
     public void Fire()

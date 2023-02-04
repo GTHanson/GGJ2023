@@ -348,7 +348,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.3
   m_SlopeLimit: 45
-  m_StepOffset: 0.25
+  m_StepOffset: 0
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1f25e8489301a479bb958453074211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _input: {fileID: 6328903976959655050}
 --- !u!114 &8010911465833283163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0}
   look: {x: 0, y: 0}
-  jump: 0
+  interact: 0
   sprint: 0
   analogMovement: 0
   cursorLocked: 1

@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public static class InteractableManager
 {
     public static Transform PlayerTransform;
+    public static float InteractRange = 2;
     private static List<Interactable> interactables = new List<Interactable>();
+    private static Interactable closest = null;
 
     public static void AddInteractable(Interactable interactable)
     {
@@ -17,17 +19,60 @@ public static class InteractableManager
     public static void Update()
     {
         // find closest interactable
-        Interactable closest = interactables[0];
+        Interactable lastClosest = closest;
+        float closestDistance = float.MaxValue;
         foreach (Interactable interactable in interactables)
         {
-            //if(Vector3.Distance(closest.transform.position, ))
+            float dist = Vector3.Distance(interactable.transform.position, PlayerTransform.position);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                closest = interactable;
+            }
         }
+
+        if (closestDistance > InteractRange)
+        {
+            closest.DisableInteraction();
+            closest = null;
+        }
+        else if (closest != lastClosest)
+        {
+            closest.EnableInteraction();
+
+            if (lastClosest != null)
+                lastClosest.DisableInteraction();
+        }
+    }
+
+    public static void Interact()
+    {
+        if (closest == null) return;
+        closest.OnInteract.Invoke();
     }
 }
 
 public class Interactable : MonoBehaviour
 {
     public UnityEvent OnInteract;
+    [SerializeField]
+    private GameObject worldUI;
+    private bool interactEnabled = false;
 
-    
+    private void Awake()
+    {
+        InteractableManager.AddInteractable(this);
+    }
+
+    public void EnableInteraction()
+    {
+        interactEnabled = true;
+        worldUI.SetActive(true);
+    }
+
+    public void DisableInteraction()
+    {
+        interactEnabled = false;
+        worldUI.SetActive(false);
+    }
 }

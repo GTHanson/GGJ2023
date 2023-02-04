@@ -10,20 +10,23 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
-		public bool jump;
+		public bool interact;
 		public bool sprint;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
-#if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
-#endif
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
+        private Player player;
+        private void Start()
+        {
+            player = GetComponent<Player>();
+        }
+
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -36,19 +39,15 @@ namespace StarterAssets
 			}
 		}
 
-		public void OnJump(InputValue value)
-		{
-			JumpInput(value.isPressed);
-		}
-
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
 		}
-#else
-	// old input sys if we do decide to have it (most likely wont)...
-#endif
 
+        public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
+        }
 
 		public void MoveInput(Vector2 newMoveDirection)
 		{
@@ -60,17 +59,19 @@ namespace StarterAssets
 			look = newLookDirection;
 		}
 
-		public void JumpInput(bool newJumpState)
+		public void InteractInput(bool newInteractState)
 		{
-			jump = newJumpState;
+            interact = newInteractState;
+            if(interact)
+            {
+                player.Interact();
+            }
 		}
 
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
 		}
-
-#if !UNITY_IOS || !UNITY_ANDROID
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
@@ -81,8 +82,6 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-
-#endif
 
 	}
 	
