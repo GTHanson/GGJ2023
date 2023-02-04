@@ -392,10 +392,9 @@ MonoBehaviour:
   rotatePivot: {fileID: 7563893829823848624}
   shootPoint: {fileID: 3543224614256504126}
   muzzleParticle: {fileID: 9179073505938332364}
-  animator: {fileID: 6797905191961485111}
   ShootForce: 100
   CooldownTime: 1
-  MouseSensitivity: 10
+  MouseSensitivity: 2
   VerticalClampAngle: 40
   HoriztonalClampAngle: 60
   CarrotPrefab: {fileID: 2993311515644084974, guid: ebb696b543f20844fbe843ec660fa584, type: 3}
