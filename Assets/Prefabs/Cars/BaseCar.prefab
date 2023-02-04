@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cfe6f8a3240cf34590c73164b8a26fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraTransform: {fileID: 606951563100514189}
   EastEntryPoint: {fileID: 7677666162567045356}
   WestEntryPoint: {fileID: 8768284649407913278}
   EastCarPrefab: {fileID: 0}
