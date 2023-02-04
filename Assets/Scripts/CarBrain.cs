@@ -7,6 +7,8 @@ public class CarBrain : MonoBehaviour
 {
     #region Inspector Set
 
+    public Transform CameraTransform;
+
     [SerializeField]
     private Transform EastEntryPoint;
     [SerializeField]
@@ -27,11 +29,18 @@ public class CarBrain : MonoBehaviour
     private CarBrain WestCar = null;
     private CarBrain EastCar = null;
 
+    private TrainBrain trainBrain;
+
     #endregion
 
     // ^ vars - funcs v //
 
     #region Setup
+
+    private void OnEnable()
+    {
+        trainBrain = FindFirstObjectByType<TrainBrain>();
+    }
 
     private void Setup(CarBrain ParentCar, bool ParentToEast)
     {
@@ -88,6 +97,7 @@ public class CarBrain : MonoBehaviour
         {
             //tell player to go to eastcar.westentrypoint
             playerController.JumpToPoint(EastCar.GetWestEntryPosition(), 5f, 1f);
+            trainBrain.SendCameraToPoint(EastCar.CameraTransform.position);
         }
     }
 
@@ -102,6 +112,7 @@ public class CarBrain : MonoBehaviour
         {
             //tell player to go to eastcar.westentrypoint
             playerController.JumpToPoint(WestCar.GetEastEntryPosition(), 5f, 1f);
+            trainBrain.SendCameraToPoint(WestCar.CameraTransform.position);
         }
     }
 
@@ -117,6 +128,7 @@ public class CarBrain : MonoBehaviour
         if (carList.Length >= 50) return;
 
         var eastCarGameObject = Instantiate(EastCarPrefab, transform.position - new Vector3(-20, 0, 0), new Quaternion());
+        eastCarGameObject.transform.parent = transform.parent;
         EastCar = eastCarGameObject.GetComponent<CarBrain>();
         EastCar.Setup(this, false);
     }
@@ -129,6 +141,7 @@ public class CarBrain : MonoBehaviour
         if (carList.Length >= 50) return;
 
         var westCarGameObject = Instantiate(WestCarPrefab, transform.position - new Vector3(20, 0, 0), new Quaternion());
+        westCarGameObject.transform.parent = transform.parent;
         WestCar = westCarGameObject.GetComponent<CarBrain>();
         WestCar.Setup(this, false);
     }
