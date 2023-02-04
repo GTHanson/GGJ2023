@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlotBrain : MonoBehaviour
 {
-    private enum PlotBrainState
+    public enum PlotBrainState
     {
         locked,
         ready,
@@ -30,7 +31,8 @@ public class PlotBrain : MonoBehaviour
 
     private float growProgress = 0f;
     private Player playerQuickRef;
-    private PlotBrainState state = PlotBrainState.locked;
+    
+    public PlotBrainState state = PlotBrainState.locked;
 
     #endregion
 
@@ -66,6 +68,9 @@ public class PlotBrain : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+
+        if (state == PlotBrainState.growing && VeggiePool.childCount >= 20) state = PlotBrainState.stuck;
+        if (state == PlotBrainState.stuck && VeggiePool.childCount < 20) state = PlotBrainState.growing;
 
         if (growProgress >= 1f)
         {
@@ -107,12 +112,22 @@ public class PlotBrain : MonoBehaviour
         {
             playerQuickRef.Money -= plotCost;
             state = PlotBrainState.growing;
+
+            var interact = GetComponentInChildren<Interactable>();
+            if (interact)
+            {
+                interact.gameObject.SetActive(false);
+            }
         }
     }
 
     public void SpawnVeggie()
     {
-        Instantiate(VeggiePrefab, VeggiePool);
+        var veggie = Instantiate(VeggiePrefab, VeggiePool);
+        if (veggie.TryGetComponent<Rigidbody>(out var VgRb))
+        {
+            VgRb.AddForce(Random.insideUnitSphere * 100f);
+        }
     }
 
     #endregion
