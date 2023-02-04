@@ -102,6 +102,8 @@ namespace StarterAssets
             float distance = Vector3.Distance(_startPosition, target);
             float stepScale = speed / distance;
             float progress = 0;
+
+            gameObject.layer = LayerMask.NameToLayer("LerpingPlayer");
    
             while (progress < 1.0f)
             {
@@ -123,6 +125,8 @@ namespace StarterAssets
 
                 yield return new WaitForEndOfFrame();
             }
+
+            gameObject.layer = LayerMask.NameToLayer("Player");
 
             canMove = true;
             jumpRoutine = null;
