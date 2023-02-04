@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -31,12 +32,6 @@ namespace StarterAssets
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
 
-		[Space(10)]
-		[Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
-		public float JumpTimeout = 0.50f;
-		[Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
-		public float FallTimeout = 0.15f;
-
 		[Header("Player Grounded")]
 		[Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
 		public bool Grounded = true;
@@ -47,40 +42,13 @@ namespace StarterAssets
 		[Tooltip("What layers the character uses as ground")]
 		public LayerMask GroundLayers;
 
-		[Header("Cinemachine")]
-		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
-		public GameObject CinemachineCameraTarget;
-		[Tooltip("How far in degrees can you move the camera up")]
-		public float TopClamp = 70.0f;
-		[Tooltip("How far in degrees can you move the camera down")]
-		public float BottomClamp = -30.0f;
-		[Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
-		public float CameraAngleOverride = 0.0f;
-		[Tooltip("For locking the camera position on all axis")]
-		public bool LockCameraPosition = false;
-
-		// cinemachine
-		private float _cinemachineTargetYaw;
-		private float _cinemachineTargetPitch;
-
 		// player
 		private float _speed;
 		private float _animationBlend;
 		private float _targetRotation = 0.0f;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _terminalVelocity = 53.0f;
-
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
-		private float _fallTimeoutDelta;
-
-		// animation IDs
-		private int _animIDSpeed;
-		private int _animIDGrounded;
-		private int _animIDJump;
-		private int _animIDFreeFall;
-		private int _animIDMotionSpeed;
+        private float _terminalVelocity = 53.0f;
 
 		private Animator _animator;
 		private CharacterController _controller;
@@ -90,6 +58,7 @@ namespace StarterAssets
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
+        private bool canMove = true;
 
 		private void Awake()
 		{
@@ -105,33 +74,61 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
-
-			AssignAnimationIDs();
-
-			// reset our timeouts on start
-			_jumpTimeoutDelta = JumpTimeout;
-			_fallTimeoutDelta = FallTimeout;
 		}
 
 		private void Update()
 		{
-			_hasAnimator = TryGetComponent(out _animator);
-			
-			JumpAndGravity();
+			//JumpAndGravity();
 			GroundedCheck();
 			Move();
+
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                JumpToPoint(Vector3.zero, 5, 2);
+            }
 		}
 
-		private void AssignAnimationIDs()
-		{
-			_animIDSpeed = Animator.StringToHash("Speed");
-			_animIDGrounded = Animator.StringToHash("Grounded");
-			_animIDJump = Animator.StringToHash("Jump");
-			_animIDFreeFall = Animator.StringToHash("FreeFall");
-			_animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-		}
+        private Coroutine jumpRoutine = null;
+        public void JumpToPoint(Vector3 target, float speed, float arcHeight)
+        {
+            if (jumpRoutine != null) return;
+            jumpRoutine = StartCoroutine(ArcMovement(target, speed, arcHeight));
+            canMove = false;
+        }
 
-		private void GroundedCheck()
+        private IEnumerator ArcMovement(Vector3 target, float speed, float arcHeight)
+        {
+            Vector3 _startPosition = transform.position;
+            float distance = Vector3.Distance(_startPosition, target);
+            float stepScale = speed / distance;
+            float progress = 0;
+   
+            while (progress < 1.0f)
+            {
+                // Increment our progress from 0 at the start, to 1 when we arrive.
+                progress = Mathf.Min(progress + Time.deltaTime * stepScale, 1.0f);
+
+                // Turn this 0-1 value into a parabola that goes from 0 to 1, then back to 0.
+                float parabola = 1.0f - 4.0f * (progress - 0.5f) * (progress - 0.5f);
+
+                // Travel in a straight line from our start position to the target.        
+                Vector3 nextPos = Vector3.Lerp(_startPosition, target, progress);
+
+                // Then add a vertical arc in excess of this.
+                nextPos.y += parabola * arcHeight;
+
+                // Continue as before.
+                transform.LookAt(nextPos, transform.forward);
+                transform.position = nextPos;
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            canMove = true;
+            jumpRoutine = null;
+        }
+
+        private void GroundedCheck()
 		{
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
@@ -140,7 +137,7 @@ namespace StarterAssets
 			// update animator if using character
 			if (_hasAnimator)
 			{
-				_animator.SetBool(_animIDGrounded, Grounded);
+				//_animator.SetBool(_animIDGrounded, Grounded);
 			}
 		}
 
@@ -165,6 +162,7 @@ namespace StarterAssets
 
 		private void Move()
 		{
+            if (canMove == false) return;
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -219,11 +217,12 @@ namespace StarterAssets
 			// update animator if using character
 			if (_hasAnimator)
 			{
-				_animator.SetFloat(_animIDSpeed, _animationBlend);
-				_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+				//_animator.SetFloat(_animIDSpeed, _animationBlend);
+				//_animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
 			}
 		}
 
+        /*
 		private void JumpAndGravity()
 		{
 			if (Grounded)
@@ -292,7 +291,7 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
-
+        */
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;
