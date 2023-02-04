@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         InteractableManager.Update();
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Money += 10;
+        }
     }
 
     public void Interact()

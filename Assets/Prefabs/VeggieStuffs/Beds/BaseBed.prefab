@@ -97,6 +97,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3200224682886208970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754562252710582829}
+  m_Layer: 0
+  m_Name: VeggiePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &754562252710582829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200224682886208970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.798, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5173895023037836906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4834686646715622534
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +670,7 @@ Transform:
   - {fileID: 5173895021483895452}
   - {fileID: 7288448883932131336}
   m_Father: {fileID: 5173895023037836906}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5173895022040247342
 GameObject:
@@ -1423,7 +1454,7 @@ Transform:
   - {fileID: 5173895021328484129}
   - {fileID: 5173895023215248228}
   m_Father: {fileID: 5173895023037836906}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5173895022817787138
 MonoBehaviour:
@@ -1437,7 +1468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0fef93b060015488d9d405255d90f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Button: {fileID: 5173895022606304770}
+  LockedButton: {fileID: 4834686646715622534}
+  ReadyButton: {fileID: 5173895022606304770}
   Dirt: {fileID: 5173895021328484128}
   Baby: {fileID: 5173895022494997688}
   Gettingthere: {fileID: 5173895021505507225}
@@ -1631,6 +1663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5173895023037836906}
+  - component: {fileID: -2778131968729337558}
   m_Layer: 0
   m_Name: BaseBed
   m_TagString: Untagged
@@ -1646,16 +1679,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5173895023037836905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.86, y: 0, z: 1.61}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 754562252710582829}
   - {fileID: 5173895021584863642}
   - {fileID: 5173895022817787137}
   - {fileID: 6858485713810778043}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2778131968729337558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173895023037836905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf34bbbab537fb4d88d7b2c64311d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plotCost: 10
+  secondsPerVeggie: 4
+  AnimBrain: {fileID: 5173895022817787138}
+  VeggiePool: {fileID: 754562252710582829}
+  VeggiePrefab: {fileID: 5529507882089031660, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
 --- !u!1 &5173895023215248251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8087291324898807894, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8087291324898807894, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1748,6 +1799,22 @@ PrefabInstance:
     - target: {fileID: 8087291324898807894, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157949996105157337, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -2778131968729337558}
+    - target: {fileID: 9157949996105157337, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AttemptPurchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157949996105157337, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlotBrain, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157949996105157337, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}

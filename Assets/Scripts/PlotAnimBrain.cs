@@ -62,7 +62,7 @@ public class PlotAnimBrain : MonoBehaviour
             case PlotState.Dirt:
                 LockedButton.SetActive(false);
                 ReadyButton.SetActive(false);
-                Dirt.SetActive(false);
+                Dirt.SetActive(true);
                 Baby.SetActive(false);
                 Gettingthere.SetActive(false);
                 Soontm.SetActive(false);
@@ -70,7 +70,7 @@ public class PlotAnimBrain : MonoBehaviour
             case PlotState.Baby:
                 LockedButton.SetActive(false);
                 ReadyButton.SetActive(false);
-                Dirt.SetActive(false);
+                Dirt.SetActive(true);
                 Baby.SetActive(true);
                 Gettingthere.SetActive(false);
                 Soontm.SetActive(false);
@@ -78,7 +78,7 @@ public class PlotAnimBrain : MonoBehaviour
             case PlotState.Gettingthere:
                 LockedButton.SetActive(false);
                 ReadyButton.SetActive(false);
-                Dirt.SetActive(false);
+                Dirt.SetActive(true);
                 Baby.SetActive(false);
                 Gettingthere.SetActive(true);
                 Soontm.SetActive(false);
@@ -86,7 +86,7 @@ public class PlotAnimBrain : MonoBehaviour
             case PlotState.Soontm:
                 LockedButton.SetActive(false);
                 ReadyButton.SetActive(false);
-                Dirt.SetActive(false);
+                Dirt.SetActive(true);
                 Baby.SetActive(false);
                 Gettingthere.SetActive(false);
                 Soontm.SetActive(true);
