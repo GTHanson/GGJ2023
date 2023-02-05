@@ -172,7 +172,7 @@ public class PlotBrain : MonoBehaviour
         {
             nextUpgradeDetail = upgradeList[0];
             upgradeList.RemoveAt(0);
-            upgradeText.text = "-" + nextUpgradeDetail.cost;
+            upgradeText.text = "Upgrade Speed & Cap\n$" + nextUpgradeDetail.cost;
         }
     }
 

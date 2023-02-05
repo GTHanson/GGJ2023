@@ -11753,7 +11753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Created By
+  m_text: Created by
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
   m_sharedMaterial: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
@@ -13774,7 +13774,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nAcorn \nBri Simpson\nTy Morrow\nAlex Jalonen\nGriffon Hanson"
+  m_text: "\n Alfie Acorn \"Gandalf\" Wheeler\nBri Simpson\nTy Morrow\nAlex Jalonen\nGriffon
+    Hanson"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
   m_sharedMaterial: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
