@@ -258,8 +258,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 2503148327473830678}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3586662592814754641}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 9108998523331532060}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+--- !u!54 &2503148327473830678 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3326061802754858001, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+  m_PrefabInstance: {fileID: 906476634977208071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4596804670855634403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3701768455472995044, guid: fce3e591b044eb74e8c3666db1309094, type: 3}

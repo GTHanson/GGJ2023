@@ -16,6 +16,7 @@ public class DoorBrain : MonoBehaviour
     public Material GreenMaterial;
     public Collider TriggerCollider;
     private Player playerQuickRef;
+    private AudioSource audioSource;
 
     void OnEnable()
     {
@@ -23,12 +24,17 @@ public class DoorBrain : MonoBehaviour
         InvokeRepeating(nameof(SlowUpdate), timeBetweenUpdates, timeBetweenUpdates);
     }
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private float timeBetweenUpdates = .1f;
     void SlowUpdate()
     {
         if (ButtonGameObject.gameObject.activeSelf)
         {
-            ButtonGameObject.material = (playerQuickRef.Money-DoorCost) switch
+            ButtonGameObject.material = (playerQuickRef.Money - DoorCost) switch
             {
                 < 0 => RedMaterial,
                 >= 0 => GreenMaterial,
@@ -65,11 +71,11 @@ public class DoorBrain : MonoBehaviour
 
     public void Open()
     {
-        if(ParentCarBrain.EastCar == null && EastDoor) ParentCarBrain.LoadEastCar();
+        if (ParentCarBrain.EastCar == null && EastDoor) ParentCarBrain.LoadEastCar();
         if (ParentCarBrain.WestCar == null && !EastDoor) ParentCarBrain.LoadWestCar();
 
-        TriggerCollider.enabled = true; 
-        
+        TriggerCollider.enabled = true;
+
         ButtonGameObject.gameObject.SetActive(false);
 
         var interact = GetComponentInChildren<Interactable>();
@@ -77,5 +83,7 @@ public class DoorBrain : MonoBehaviour
         {
             interact.gameObject.SetActive(false);
         }
+
+        audioSource.Play();
     }
 }

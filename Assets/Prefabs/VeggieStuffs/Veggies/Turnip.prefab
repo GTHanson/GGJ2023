@@ -263,13 +263,38 @@ PrefabInstance:
       value: Turnip
       objectReference: {fileID: 0}
     - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 6328531666979197431}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
       propertyPath: Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4123526247958229497}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7395233962671951298}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
 --- !u!4 &5378616677864773378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3701768455472995044, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+  m_PrefabInstance: {fileID: 8789897906454384102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &6328531666979197431 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3326061802754858001, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
   m_PrefabInstance: {fileID: 8789897906454384102}
   m_PrefabAsset: {fileID: 0}

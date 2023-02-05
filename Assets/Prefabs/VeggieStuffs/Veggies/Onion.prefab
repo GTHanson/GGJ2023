@@ -148,11 +148,32 @@ PrefabInstance:
       value: Onion
       objectReference: {fileID: 0}
     - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1063374996172395482}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
       propertyPath: Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: Value
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7818677336306682469, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+      propertyPath: ModelObjs.Array.data[0]
+      value: 
+      objectReference: {fileID: 7732259490051805994}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+--- !u!54 &1063374996172395482 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3326061802754858001, guid: fce3e591b044eb74e8c3666db1309094, type: 3}
+  m_PrefabInstance: {fileID: 2371521763253260235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1420327915281143087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3701768455472995044, guid: fce3e591b044eb74e8c3666db1309094, type: 3}

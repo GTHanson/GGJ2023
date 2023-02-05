@@ -36,6 +36,8 @@ public class PlotBrain : MonoBehaviour
 
     #endregion
 
+    private AudioSource audioSource;
+
     // ^ vars - funcs v //
 
     #region Setup
@@ -44,6 +46,11 @@ public class PlotBrain : MonoBehaviour
     {
         playerQuickRef = FindFirstObjectByType<Player>();
         InvokeRepeating(nameof(SlowUpdate), timeBetweenUpdates, timeBetweenUpdates);
+    }
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 
     #endregion
@@ -118,6 +125,8 @@ public class PlotBrain : MonoBehaviour
             {
                 interact.gameObject.SetActive(false);
             }
+
+            audioSource.Play();
         }
     }
 

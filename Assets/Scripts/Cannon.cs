@@ -1,6 +1,7 @@
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,7 @@ public class Cannon : MonoBehaviour
     private ThirdPersonController playerController;
     private StarterAssetsInputs inputs;
     private PlayerInput playerInput;
+    private Player player;
     bool interacting = false;
 
     [Header("Settings")]
@@ -40,6 +42,8 @@ public class Cannon : MonoBehaviour
 
     [Header("Veggie Prefabs")]
     public GameObject CarrotPrefab;
+    public GameObject OnionPrefab;
+    public GameObject TurnipPrefab;
 
     private bool canFire = true;
 
@@ -51,6 +55,7 @@ public class Cannon : MonoBehaviour
         playerInput = FindFirstObjectByType<PlayerInput>();
         animator = GetComponent<Animator>();
         fireClip = GetComponent<AudioSource>();
+        player = FindFirstObjectByType<Player>();
 
         Vector3 rot = rotatePivot.transform.localRotation.eulerAngles;
         rotY = rot.y;
@@ -116,11 +121,40 @@ public class Cannon : MonoBehaviour
     public void Fire()
     {
         if (canFire == false) return;
+
+        GameObject objectToShoot = null;
+
+        void DeleteAndDestroy(PickupTypes type)
+        {
+            Destroy(player.PickedUpObjs[type].Last());
+            player.PickedUpObjs[type].RemoveAt(player.PickedUpObjs[type].Count - 1);
+            player.mainUI.UpdateResource(type, player.PickedUpObjs[type].Count);
+        }
+
+        // prioritize the higher value items
+        if (player.PickedUpObjs[PickupTypes.Turnip].Count > 0)
+        {
+            objectToShoot = TurnipPrefab;
+            DeleteAndDestroy(PickupTypes.Turnip);
+        }
+        else if (player.PickedUpObjs[PickupTypes.Onion].Count > 0)
+        {
+            objectToShoot = OnionPrefab;
+            DeleteAndDestroy(PickupTypes.Onion);
+        }
+        else if (player.PickedUpObjs[PickupTypes.Carrot].Count > 0)
+        {
+            objectToShoot = CarrotPrefab;
+            DeleteAndDestroy(PickupTypes.Carrot);
+        }
+
+        if (objectToShoot == null) return;
+
         canFire = false;
-        StartCoroutine(FireRoutine());
+        StartCoroutine(FireRoutine(objectToShoot));
     }
 
-    private IEnumerator FireRoutine()
+    private IEnumerator FireRoutine(GameObject objPrefab)
     {
         // fire
         fireClip.Play();
@@ -134,13 +168,21 @@ public class Cannon : MonoBehaviour
         // wait a sec
         yield return new WaitForSeconds(0.2f);
 
-        GameObject shotObject = Instantiate(CarrotPrefab, shootPoint.position, rotatePivot.rotation);
+        GameObject shotObject = Instantiate(objPrefab, shootPoint.position, rotatePivot.rotation);
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.AddForce(rotatePivot.forward * ShootForce, ForceMode.Impulse);
 
+        StartCoroutine(DestroyAfterTime(shotObject, 20));
+
         // cooldown
         yield return new WaitForSeconds(CooldownTime);
         canFire = true;
+    }
+
+    private IEnumerator DestroyAfterTime(GameObject obj, float lifeTime)
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Destroy(obj);
     }
 }
