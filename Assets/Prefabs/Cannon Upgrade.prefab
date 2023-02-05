@@ -395,10 +395,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5173895023037836906}
     m_Modifications:
+    - target: {fileID: 3565597282712427187, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565597282712427196, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565597282712427196, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3565597282712427197, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
       propertyPath: m_text
-      value: Purchase -10$ (E)
+      value: 'Cannon Upgrade
+
+        <i>Purchase 10$ (E)</i>'
       objectReference: {fileID: 0}
+    - target: {fileID: 3565597282712427197, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_fontSize
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565597282712427197, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
+    - target: {fileID: 3565597282712427197, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3565597282712427198, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
     - target: {fileID: 4716719612809914626, guid: f415af0f48c271d468ad8f40e4e3590c, type: 3}
       propertyPath: m_Name
       value: Interaction

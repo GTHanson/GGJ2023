@@ -76,10 +76,17 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private GameObject worldUI;
     private bool interactEnabled = false;
+    private Camera cam;
 
     private void Awake()
     {
         InteractableManager.AddInteractable(this);
+        cam = Camera.main;
+    }
+
+    private void Update()
+    {
+        worldUI.transform.LookAt(2 * worldUI.transform.position - cam.transform.position);
     }
 
     private void OnDisable()
