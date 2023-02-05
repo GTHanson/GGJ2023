@@ -21,6 +21,7 @@ public class Cannon : MonoBehaviour
     private ParticleSystem muzzleParticle;
     private Animator animator;
     private AudioSource fireClip;
+    private GameMusicFade gameMusic;
 
     private ThirdPersonController playerController;
     private StarterAssetsInputs inputs;
@@ -56,6 +57,7 @@ public class Cannon : MonoBehaviour
         animator = GetComponent<Animator>();
         fireClip = GetComponent<AudioSource>();
         player = FindFirstObjectByType<Player>();
+        gameMusic = FindObjectOfType<GameMusicFade>();
         try
         {
             MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
@@ -90,6 +92,7 @@ public class Cannon : MonoBehaviour
         canonCam.enabled = true;
         playerController.CanMove = false;
         MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
+        gameMusic.ToggleMusic(false);
     }
 
     public void StopInteraction()
@@ -98,6 +101,7 @@ public class Cannon : MonoBehaviour
         mainCam.enabled = true;
         canonCam.enabled = false;
         playerController.CanMove = true;
+        gameMusic.ToggleMusic(true);
     }
 
     private void Update()
