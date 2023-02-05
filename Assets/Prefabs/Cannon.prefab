@@ -398,6 +398,8 @@ MonoBehaviour:
   VerticalClampAngle: 40
   HoriztonalClampAngle: 60
   CarrotPrefab: {fileID: 4623140374748176619, guid: 049a075e7db1b5448b63eb14331c081c, type: 3}
+  OnionPrefab: {fileID: 0}
+  TurnipPrefab: {fileID: 0}
 --- !u!95 &6797905191961485111
 Animator:
   serializedVersion: 5
@@ -427,7 +429,7 @@ AudioSource:
   m_GameObject: {fileID: 4273894947265359416}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1173810341954509630, guid: 7906c278be7f95c4db661f36ab9f31e8, type: 2}
   m_audioClip: {fileID: 8300000, guid: c5a5f3b8b2578be4ca1670089f9bee9b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
