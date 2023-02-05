@@ -31,7 +31,7 @@ public class SettingsMenu : MonoBehaviour
         {
             PlayerPrefs.SetFloat("volumeGame", .5f);
             PlayerPrefs.SetFloat("volumeMusic", .5f);
-            PlayerPrefs.SetFloat("sensitivity", .2f);
+            PlayerPrefs.SetFloat("sensitivity", 1f);
         }
         else
         {
@@ -109,6 +109,8 @@ public class SettingsMenu : MonoBehaviour
     public void GameScene()
     {
         SceneManager.LoadScene(1);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void MenuNav(AudioClip audioClip)

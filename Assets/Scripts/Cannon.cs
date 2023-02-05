@@ -56,6 +56,16 @@ public class Cannon : MonoBehaviour
         animator = GetComponent<Animator>();
         fireClip = GetComponent<AudioSource>();
         player = FindFirstObjectByType<Player>();
+        try
+        {
+            MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
+        }
+        catch
+        {
+            PlayerPrefs.SetFloat("sensitivity", 1f);
+            MouseSensitivity = 1;
+        }
+            
 
         Vector3 rot = rotatePivot.transform.localRotation.eulerAngles;
         rotY = rot.y;
@@ -79,6 +89,7 @@ public class Cannon : MonoBehaviour
         mainCam.enabled = false;
         canonCam.enabled = true;
         playerController.CanMove = false;
+        MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
     }
 
     public void StopInteraction()
