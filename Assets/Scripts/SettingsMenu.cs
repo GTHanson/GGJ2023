@@ -98,6 +98,7 @@ public class SettingsMenu : MonoBehaviour
     public void ToMenu()
     {
         PlayerPrefs.Save();
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
