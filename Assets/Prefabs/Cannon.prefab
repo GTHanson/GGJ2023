@@ -201,8 +201,9 @@ MonoBehaviour:
   VerticalClampAngle: 40
   HoriztonalClampAngle: 60
   CarrotPrefab: {fileID: 4623140374748176619, guid: 049a075e7db1b5448b63eb14331c081c, type: 3}
-  OnionPrefab: {fileID: 0}
-  TurnipPrefab: {fileID: 0}
+  OnionPrefab: {fileID: 7806308694210258983, guid: cfccaccb0d3272349a8281335bf76c3d, type: 3}
+  TurnipPrefab: {fileID: 3839107079772727818, guid: de68082e8074b5744b1bcd66862adcfc, type: 3}
+  VeggieTrailPrefab: {fileID: 3523508072609389836, guid: 64e372fa036f4094091761675320b267, type: 3}
 --- !u!95 &6797905191961485111
 Animator:
   serializedVersion: 5

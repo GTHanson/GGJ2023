@@ -65,11 +65,11 @@ public class DoorBrain : MonoBehaviour
         {
             playerQuickRef.Money -= DoorCost;
 
-            Open();
+            Open(true);
         }
     }
 
-    public void Open()
+    public void Open(bool playSound = false)
     {
         if (ParentCarBrain.EastCar == null && EastDoor) ParentCarBrain.LoadEastCar();
         if (ParentCarBrain.WestCar == null && !EastDoor) ParentCarBrain.LoadWestCar();
@@ -84,6 +84,7 @@ public class DoorBrain : MonoBehaviour
             interact.gameObject.SetActive(false);
         }
 
-        audioSource.Play();
+        if(audioSource && playSound)
+            audioSource.Play();
     }
 }
