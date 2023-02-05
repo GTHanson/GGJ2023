@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class TrainManager : MonoBehaviour
 {
-    public float StartingSpeed;
+    public float MaxSpeed;
     public float Acceleration;
+    public float Decelleration;
     [SerializeField]
     private World world;
+    [SerializeField]
+    private Player player;
+    private float realMaxSpeed;
+    private float goToSpeed = 0;
+    private float timeSinceLastUpgrade = -30;
 
     private void Start()
     {
         StartTrain();
+        realMaxSpeed = MaxSpeed;
+        MaxSpeed *= 0.25f;
+        goToSpeed = MaxSpeed;
     }
 
     public void StartTrain()
@@ -21,32 +30,36 @@ public class TrainManager : MonoBehaviour
 
     private IEnumerator StartTrainRoutine()
     {
-        while(world.Speed < 2)
+        while (gameObject)
         {
-            world.Speed += 1 * Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-
-        while(world.Speed < StartingSpeed)
-        {
-            world.Speed *= 1 + (Acceleration * Time.deltaTime);
+            if (player.Money > 50)
+                MaxSpeed = realMaxSpeed;
+            while (Time.time - timeSinceLastUpgrade > 30 && world.Speed < MaxSpeed)
+            {
+                world.Speed += Acceleration * Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
             yield return new WaitForEndOfFrame();
         }
     }
 
-    public void StopTrain()
+    private Coroutine trainRoutine = null;
+    public void SlowTrain()
     {
-        StartCoroutine(StopTrainRoutine());
+        if (trainRoutine != null) return;
+        goToSpeed = 3;
+        trainRoutine = StartCoroutine(SlowTrainRoutine());
     }
 
-    private IEnumerator StopTrainRoutine()
+    private IEnumerator SlowTrainRoutine()
     {
-        while (world.Speed > 0)
+        while (world.Speed > goToSpeed)
         {
-            world.Speed -= (Acceleration / 2.0f) * Time.deltaTime;
+            world.Speed -= Decelleration * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-
-        world.Speed = 0;
+        timeSinceLastUpgrade = Time.time;
+        world.Speed = goToSpeed;
+        trainRoutine = null;
     }
 }

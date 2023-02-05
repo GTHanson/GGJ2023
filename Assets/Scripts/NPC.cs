@@ -50,6 +50,9 @@ public class NPC : MonoBehaviour
             rb.isKinematic = false;
             rb.AddForce(collision.relativeVelocity * 10, ForceMode.Impulse);
 
+            anim.StopPlayback();
+            anim.enabled = false;
+
             Instantiate(hitParticlesPrefab, collision.GetContact(0).point, Quaternion.identity);
 
             // veggies dont have gravity until they hit 
