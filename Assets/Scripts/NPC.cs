@@ -45,7 +45,7 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.layer == VeggieLayer)
         {
             rb.isKinematic = false;
-            rb.AddForce(collision.relativeVelocity, ForceMode.Impulse);
+            rb.AddForce(collision.relativeVelocity * 10, ForceMode.Impulse);
 
             Instantiate(hitParticlesPrefab, collision.GetContact(0).point, Quaternion.identity);
 

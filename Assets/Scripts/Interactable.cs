@@ -50,6 +50,11 @@ public static class InteractableManager
         if (closest == null) return;
         closest.OnInteract.Invoke();
     }
+
+    public static void Clear()
+    {
+        interactables.Clear();
+    }
 }
 
 public class Interactable : MonoBehaviour

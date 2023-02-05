@@ -180,9 +180,6 @@ public class Cannon : MonoBehaviour
         // animation
         animator.SetTrigger("Fire");
 
-        // wait a sec
-        yield return new WaitForSeconds(0.2f);
-
         GameObject shotObject = Instantiate(objPrefab, shootPoint.position, rotatePivot.rotation);
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
         rigidbody.useGravity = false;

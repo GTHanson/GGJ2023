@@ -90,6 +90,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        InteractableManager.Clear();
+    }
+
     public void Interact()
     {
         InteractableManager.Interact();
