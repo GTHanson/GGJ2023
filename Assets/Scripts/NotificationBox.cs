@@ -53,6 +53,7 @@ public class NotificationBox : MonoBehaviour
         objectCollider.enabled = false;
         notificationMenu.SetActive(true);
         textUI.text = notificationMessage;
+        continueText.SetActive(false);
         yield return new WaitForSeconds(10f);
         continueText.SetActive(false);
         notificationMenu.SetActive(false);
