@@ -74,11 +74,19 @@ PrefabInstance:
       objectReference: {fileID: 805236053352801454, guid: c167babf9dcaaed44bea0d856c5fbc18, type: 3}
     - target: {fileID: 2451819487851801993, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
       propertyPath: m_text
-      value: -10000$ (E)
+      value: -54321$ (E)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451819487851801993, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: m_fontSize
+      value: 3.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451819487851801993, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3079247414247622395, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
       propertyPath: DoorCost
-      value: 10000
+      value: 54321
       objectReference: {fileID: 0}
     - target: {fileID: 4620453308237179818, guid: a1a73950d2c748241bdebc79003bc9c6, type: 3}
       propertyPath: m_RootOrder

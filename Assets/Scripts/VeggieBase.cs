@@ -25,10 +25,10 @@ public class VeggieBase : MonoBehaviour
                 Value = 4;
                 break;
             case PickupTypes.Onion:
-                Value = 40;
+                Value = 65;
                 break;
             case PickupTypes.Turnip:
-                Value = 100;
+                Value = 1000;
                 break;
         }
     }

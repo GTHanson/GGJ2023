@@ -19,6 +19,46 @@ PrefabInstance:
       propertyPath: secondsPerVeggie
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: InitialPurchase.cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: InitialPurchase.veggieCap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[0].cost
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[1].cost
+      value: 6500
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: InitialPurchase.secondsPerVeggie
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[0].veggieCap
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[1].veggieCap
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[0].secondsPerVeggie
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2778131968729337558, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: upgradeList.Array.data[1].secondsPerVeggie
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2192799066043542864, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: m_text
       value: Purchase -1000$ (E)

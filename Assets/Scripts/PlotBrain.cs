@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,22 +18,30 @@ public class PlotBrain : MonoBehaviour
 
     #region Inspector Set
 
-    public int plotCost = 0;
-    public float secondsPerVeggie = 4f;
+
+    public UpgradeDetail InitialPurchase;
+    public List<UpgradeDetail> upgradeList;
 
     public PlotAnimBrain AnimBrain;
     public Transform VeggiePool;
 
     public GameObject VeggiePrefab;
 
+    public TextMeshPro upgradeText;
+
     #endregion
 
     #region State
+
+    private float SecondsPerVeggie = 1000000f;
+    private int VeggieCap = 0;
 
     private float growProgress = 0f;
     private Player playerQuickRef;
     
     public PlotBrainState state = PlotBrainState.locked;
+
+    private UpgradeDetail nextUpgradeDetail;
 
     #endregion
 
@@ -44,6 +53,8 @@ public class PlotBrain : MonoBehaviour
 
     void OnEnable()
     {
+        nextUpgradeDetail = InitialPurchase;
+        upgradeText.text = "-" + nextUpgradeDetail.cost;
         playerQuickRef = FindFirstObjectByType<Player>();
         InvokeRepeating(nameof(SlowUpdate), timeBetweenUpdates, timeBetweenUpdates);
     }
@@ -64,7 +75,7 @@ public class PlotBrain : MonoBehaviour
         {
             case PlotBrainState.locked:
             case PlotBrainState.ready:
-                state = (playerQuickRef.Money >= plotCost) ? PlotBrainState.ready : PlotBrainState.locked;
+                state = (playerQuickRef.Money >= nextUpgradeDetail.cost) ? PlotBrainState.ready : PlotBrainState.locked;
                     break;
             case PlotBrainState.growing:
                 growProgress += .1f;
@@ -76,13 +87,13 @@ public class PlotBrain : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
 
-        if (state == PlotBrainState.growing && VeggiePool.childCount >= 20) state = PlotBrainState.stuck;
-        if (state == PlotBrainState.stuck && VeggiePool.childCount < 20) state = PlotBrainState.growing;
+        if (state == PlotBrainState.growing && VeggiePool.childCount >= VeggieCap) state = PlotBrainState.stuck;
+        if (state == PlotBrainState.stuck && VeggiePool.childCount < VeggieCap) state = PlotBrainState.growing;
 
-        if (growProgress >= 1f)
+        if (growProgress >= SecondsPerVeggie)
         {
             SpawnVeggie();
-            growProgress -= 1f;
+            growProgress -= SecondsPerVeggie;
         }
 
         AnimBrain.CurrentState = state switch
@@ -96,7 +107,7 @@ public class PlotBrain : MonoBehaviour
 
         if (state == PlotBrainState.growing)
         {
-            AnimBrain.CurrentState = growProgress switch
+            AnimBrain.CurrentState = (growProgress/SecondsPerVeggie) switch
             {
                 < .25f => PlotAnimBrain.PlotState.Dirt,
                 < .5f => PlotAnimBrain.PlotState.Baby,
@@ -115,13 +126,15 @@ public class PlotBrain : MonoBehaviour
 
     public void AttemptPurchase()
     {
-        if (playerQuickRef && playerQuickRef.Money >= plotCost )
+        if (playerQuickRef && nextUpgradeDetail!=null && playerQuickRef.Money >= nextUpgradeDetail.cost )
         {
-            playerQuickRef.Money -= plotCost;
+            playerQuickRef.Money -= nextUpgradeDetail.cost;
             state = PlotBrainState.growing;
 
+            Upgrade();
+
             var interact = GetComponentInChildren<Interactable>();
-            if (interact)
+            if (interact && nextUpgradeDetail == null)
             {
                 interact.gameObject.SetActive(false);
             }
@@ -143,6 +156,25 @@ public class PlotBrain : MonoBehaviour
 
     #region Helper
 
+    public void Upgrade()
+    {
+        if (nextUpgradeDetail == null) return;
+
+        SecondsPerVeggie = nextUpgradeDetail.secondsPerVeggie;
+        VeggieCap = nextUpgradeDetail.veggieCap;
+
+        if (upgradeList.Count <= 0)
+        {
+            nextUpgradeDetail = null;
+            upgradeText.text = "";
+        }
+        else
+        {
+            nextUpgradeDetail = upgradeList[0];
+            upgradeList.RemoveAt(0);
+            upgradeText.text = "-" + nextUpgradeDetail.cost;
+        }
+    }
 
     #endregion
 }
