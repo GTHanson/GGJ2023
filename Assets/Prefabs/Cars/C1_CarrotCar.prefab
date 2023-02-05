@@ -112,6 +112,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotBed (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1535410461103698033, guid: 3ae916d5413bf5949a3cdec148e45887, type: 3}
+      propertyPath: plotCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931991940054608907, guid: 3ae916d5413bf5949a3cdec148e45887, type: 3}
+      propertyPath: m_text
+      value: Purchase - 0$ (E)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ae916d5413bf5949a3cdec148e45887, type: 3}
 --- !u!1001 &3222591921410500111

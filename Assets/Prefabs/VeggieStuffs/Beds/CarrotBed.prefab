@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: secondsPerVeggie
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5173895021328484128, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5173895023037836905, guid: 20b9da1a2b43615448308357b52c468a, type: 3}
       propertyPath: m_Name
       value: CarrotBed
