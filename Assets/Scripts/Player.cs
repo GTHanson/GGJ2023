@@ -3,6 +3,8 @@ using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum PickupTypes
 {
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
     }
 
     private int internalMoney = 0;
+    private float currentTimeScale = 1f;
+    private PlayerInput plut;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +51,7 @@ public class Player : MonoBehaviour
         {
             PickedUpObjs.Add(i, new List<GameObject>());
         }
+        plut = GetComponent<PlayerInput>();
     }
 
 
@@ -61,6 +66,27 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F2))
         {
             Money += 100000000;
+        }
+        if (plut.actions["Start"].WasPressedThisFrame())
+        {
+            currentTimeScale = Time.timeScale;
+            if (currentTimeScale == 1f)
+            {
+                currentTimeScale = 0f;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                SceneManager.LoadScene("TySettings", LoadSceneMode.Additive);
+            }
+            else
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                currentTimeScale = 1f;
+                SceneManager.UnloadSceneAsync("TySettings");
+                Cannon cann = FindObjectOfType<Cannon>();
+                cann.MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
+            }
+            Time.timeScale = currentTimeScale;
         }
     }
 
