@@ -13,13 +13,16 @@ public class NPC : MonoBehaviour
     private NavMeshAgent agent;
     private Rigidbody rb;
     private Player player;
+    private Animator anim;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         player = FindFirstObjectByType<Player>();
+        anim = GetComponentInChildren<Animator>();
         StartCoroutine(MovementLoop());
+        RandomAnim();
     }
 
     private IEnumerator MovementLoop()
@@ -56,5 +59,19 @@ public class NPC : MonoBehaviour
             VeggieBase veg = collision.transform.GetComponentInChildren<VeggieBase>();
             player.Money += veg.Value;
         }
+    }
+
+    private void RandomAnim()
+    {
+        StartCoroutine(AnimTime());
+        int randomNumber = Random.Range(1, 4);
+        anim.SetTrigger("anim" + randomNumber);
+    }
+
+    private IEnumerator AnimTime()
+    {
+        int randomNumber = Random.Range(4, 10);
+        yield return new WaitForSeconds((float)randomNumber);
+        RandomAnim();
     }
 }

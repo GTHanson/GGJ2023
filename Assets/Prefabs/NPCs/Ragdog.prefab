@@ -88,6 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8473077354645026270}
   - component: {fileID: 7701883199934992515}
+  - component: {fileID: 49782042198738836}
+  - component: {fileID: 759339242508184739}
   m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
@@ -129,6 +131,46 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!95 &49782042198738836
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473077354645026265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cbac78d7fb3bee42bfdbd5c7b57912d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!111 &759339242508184739
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473077354645026265}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: bf27adbde15c91742938633d824a6e7e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: bf27adbde15c91742938633d824a6e7e, type: 2}
+  - {fileID: 7400000, guid: adc295fb405d2814387f49c2028bb464, type: 2}
+  - {fileID: 7400000, guid: 0b3d059ee9c48134394d71412421dbf8, type: 2}
+  - {fileID: 7400000, guid: b4a1324ca161e494da59f534142ca29c, type: 2}
+  - {fileID: 7400000, guid: 9dca8bdf01fd66a45b15bf591ecf0ffd, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &5965871163939289087
 PrefabInstance:
   m_ObjectHideFlags: 0
