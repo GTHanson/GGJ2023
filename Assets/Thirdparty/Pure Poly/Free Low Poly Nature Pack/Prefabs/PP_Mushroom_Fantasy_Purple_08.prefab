@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2685705423253822111}
   - component: {fileID: 1362991237420635450}
   - component: {fileID: 3823175682418909680}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PP_Mushroom_Fantasy_Purple_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}

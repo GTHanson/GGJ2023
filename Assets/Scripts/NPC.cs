@@ -22,25 +22,9 @@ public class NPC : MonoBehaviour
         StartCoroutine(MovementLoop());
     }
 
-    private float speedLastTime = 0;
     private IEnumerator MovementLoop()
     {
-        if(agent == null || agent.isOnNavMesh == false)
-        {
-            Destroy(gameObject);
-            yield break;
-        }
-
-        if (speedLastTime == 0 && agent.velocity.magnitude == 0)
-        {
-            agent.SetDestination(RandomNavmeshLocation(Random.Range(200, 1000)));
-        }
-
-        speedLastTime = agent.velocity.magnitude;
-
-        // wait half a second = 1 second of stopped time
-        yield return new WaitForSeconds(0.5f);
-        StartCoroutine(MovementLoop());
+        yield break;
     }
 
     public Vector3 RandomNavmeshLocation(float radius)
@@ -60,7 +44,6 @@ public class NPC : MonoBehaviour
     {
         if (collision.gameObject.layer == VeggieLayer)
         {
-            agent.enabled = false;
             rb.isKinematic = false;
             rb.AddForce(collision.relativeVelocity, ForceMode.Impulse);
 

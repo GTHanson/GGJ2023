@@ -20,24 +20,11 @@ public class CustomerManager : MonoBehaviour
     private void Awake()
     {
         spawns = FindObjectsByType<CustomerSpawn>(FindObjectsSortMode.None).ToList();
-        Debug.Log(spawns.Count);
     }
 
     private void Start()
     {
         StartCoroutine(CustomerSpawnLoop());
-    }
-    public Vector3 RandomNavmeshLocation(Vector3 pos, float radius)
-    {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * radius;
-        randomDirection += pos;
-        Vector3 finalPosition = Vector3.zero;
-
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, 1))
-        {
-            finalPosition = hit.position;
-        }
-        return finalPosition;
     }
 
     private IEnumerator CustomerSpawnLoop()
