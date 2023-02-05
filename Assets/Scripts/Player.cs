@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
     }
 
     private int internalMoney = 0;
-    private float currentTimeScale = 1f;
     private PlayerInput plut;
 
     // Start is called before the first frame update
@@ -69,7 +68,6 @@ public class Player : MonoBehaviour
         }
         if (plut.actions["Start"].WasPressedThisFrame())
         {
-            currentTimeScale = Time.timeScale;
             if (Time.timeScale == 1f)
             {
                 Time.timeScale = 0f;
