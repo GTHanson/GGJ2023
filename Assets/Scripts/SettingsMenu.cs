@@ -103,7 +103,13 @@ public class SettingsMenu : MonoBehaviour
 
     public void UnloadSettings()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.UnloadSceneAsync("TySettings");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+        SceneManager.UnloadSceneAsync("TySettings");
+        Cannon cann = FindObjectOfType<Cannon>();
+        cann.MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
     }
 
     public void GameScene()

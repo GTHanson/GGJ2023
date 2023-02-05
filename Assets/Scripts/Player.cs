@@ -70,9 +70,9 @@ public class Player : MonoBehaviour
         if (plut.actions["Start"].WasPressedThisFrame())
         {
             currentTimeScale = Time.timeScale;
-            if (currentTimeScale == 1f)
+            if (Time.timeScale == 1f)
             {
-                currentTimeScale = 0f;
+                Time.timeScale = 0f;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 SceneManager.LoadScene("TySettings", LoadSceneMode.Additive);
@@ -81,12 +81,11 @@ public class Player : MonoBehaviour
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                currentTimeScale = 1f;
+                Time.timeScale = 1f;
                 SceneManager.UnloadSceneAsync("TySettings");
                 Cannon cann = FindObjectOfType<Cannon>();
                 cann.MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
             }
-            Time.timeScale = currentTimeScale;
         }
     }
 
