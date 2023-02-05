@@ -48,6 +48,8 @@ public class TrainManager : MonoBehaviour
     {
         if (trainRoutine != null) return;
         goToSpeed = 3;
+        if (player.Money > 50)
+            goToSpeed = 6;
         trainRoutine = StartCoroutine(SlowTrainRoutine());
     }
 
