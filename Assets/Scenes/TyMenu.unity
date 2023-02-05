@@ -7358,8 +7358,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The On-The-Go Wizard\u2019s Guide to the Vegetable and Real Estate Markets:
-    Krazy Kart Edition\n"
+  m_text: "The On-the-go Wizard\u2019s Guide to the Vegetable and Real Estate Markets:
+    \nA Veget-a-bullet Train Adventure"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
   m_sharedMaterial: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
@@ -13774,8 +13774,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n Alfie Acorn \"Gandalf\" Wheeler\nBri Simpson\nTy Morrow\nAlex Jalonen\nGriffon
-    Hanson"
+  m_text: '
+
+    Alfie Acorn "Gandalf" Wheeler
+
+    Bri Simpson
+
+    Ty Morrow
+
+    Alex
+    Jalonen
+
+    Griffon Hanson'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}
   m_sharedMaterial: {fileID: -2553510387844531693, guid: 876a472bd12ea9449a1f577e0163155b, type: 2}

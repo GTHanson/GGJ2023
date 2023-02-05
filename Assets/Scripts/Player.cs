@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     private int internalMoney = 0;
     private PlayerInput plut;
+    [SerializeField]
+    private GameObject moneyPrefab;
 
     // Start is called before the first frame update
     void Start()
