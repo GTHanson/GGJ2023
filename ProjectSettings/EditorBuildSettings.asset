@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TySettings.unity
     guid: 30410374cdc78564b91d6b46e266ae49
+  - enabled: 1
+    path: Assets/Scenes/HappyHome.unity
+    guid: 5ea6714137b50a448921e546a772663a
   m_configObjects: {}

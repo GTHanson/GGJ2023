@@ -14,6 +14,7 @@ public class NPC : MonoBehaviour
     private Rigidbody rb;
     private Player player;
     private Animator anim;
+    private CustomerManager manager;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class NPC : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         player = FindFirstObjectByType<Player>();
         anim = GetComponentInChildren<Animator>();
+        manager = FindAnyObjectByType<CustomerManager>();
         StartCoroutine(MovementLoop());
         RandomAnim();
     }
@@ -61,7 +63,15 @@ public class NPC : MonoBehaviour
             // veg
             VeggieBase veg = collision.transform.GetComponentInChildren<VeggieBase>();
             player.Money += veg.Value;
+
+            Invoke(nameof(DestroySomeTime), 10);
         }
+    }
+
+    private void DestroySomeTime()
+    {
+        manager.npcList.Remove(this);
+        Destroy(gameObject);
     }
 
     private void RandomAnim()

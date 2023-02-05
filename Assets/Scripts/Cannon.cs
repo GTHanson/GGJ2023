@@ -1,3 +1,4 @@
+using CustomOutline;
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
@@ -94,6 +95,12 @@ public class Cannon : MonoBehaviour
         playerController.CanMove = false;
         MouseSensitivity = PlayerPrefs.GetFloat("sensitivity");
         gameMusic.ToggleMusic(false);
+
+        Outline[] outlines = FindObjectsOfType<Outline>();
+        foreach (var o in outlines)
+        {
+            o.enabled = true;
+        }
     }
 
     public void StopInteraction()
@@ -103,6 +110,12 @@ public class Cannon : MonoBehaviour
         canonCam.enabled = false;
         playerController.CanMove = true;
         gameMusic.ToggleMusic(true);
+
+        Outline[] outlines = FindObjectsOfType<Outline>();
+        foreach (var o in outlines)
+        {
+            o.enabled = false;
+        }
     }
 
     private void Update()
@@ -136,7 +149,7 @@ public class Cannon : MonoBehaviour
 
     public void Fire()
     {
-        if (canFire == false) return;
+        if (canFire == false || Time.timeScale == 0) return;
 
         GameObject objectToShoot = null;
 

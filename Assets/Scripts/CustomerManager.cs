@@ -15,7 +15,7 @@ public class CustomerManager : MonoBehaviour
     private GameObject world;
 
     private List<CustomerSpawn> spawns = new List<CustomerSpawn>();
-    private List<NPC> npcList = new List<NPC>();
+    public List<NPC> npcList = new List<NPC>();
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class CustomerManager : MonoBehaviour
 
             foreach (CustomerSpawn spawn in spawns.Where(sp => sp.OnCooldown == false))
             {
-                if (UnityEngine.Random.Range(0, 4) == 1)
+                if (UnityEngine.Random.Range(0, 2) == 1)
                 {
                     NPC npc = spawn.SpawnCustomer(CustomerPrefabs[UnityEngine.Random.Range(0, CustomerPrefabs.Count)]);
                     if(npc != null)
