@@ -15,7 +15,7 @@ public class VeggieBase : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
     private ParticleSystem particles;
-    private bool pickedUp = false;
+    public bool pickedUp = false;
 
     private void OnValidate()
     {

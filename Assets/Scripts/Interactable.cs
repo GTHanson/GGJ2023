@@ -21,14 +21,27 @@ public static class InteractableManager
         // find closest interactable
         Interactable lastClosest = closest;
         float closestDistance = float.MaxValue;
+
+        List<Interactable> toRemove = new List<Interactable>();
         foreach (Interactable interactable in interactables)
         {
+            if (interactable == null)
+            {
+                toRemove.Add(interactable);
+                continue;
+            }
+
             float dist = Vector3.Distance(interactable.transform.position, PlayerTransform.position);
             if (dist < closestDistance)
             {
                 closestDistance = dist;
                 closest = interactable;
             }
+        }
+
+        foreach (Interactable interactable in toRemove)
+        {
+            interactables.Remove(interactable);
         }
 
         if (closestDistance > InteractRange)

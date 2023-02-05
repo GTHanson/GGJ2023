@@ -214,6 +214,7 @@ MonoBehaviour:
   ModelObjs: []
   Value: 0
   rb: {fileID: 0}
+  pickedUp: 0
 --- !u!198 &6080693347013438634
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5006,6 +5007,7 @@ GameObject:
   - component: {fileID: 8735339820802291477}
   - component: {fileID: 7456635656455023853}
   - component: {fileID: 3326061802754858001}
+  - component: {fileID: 6734787458770698044}
   m_Layer: 12
   m_Name: BaseVeggie
   m_TagString: Untagged
@@ -5109,6 +5111,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6734787458770698044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5529507882089031660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc7f1e4f70361d45b7df0443cfd71e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vegBase: {fileID: 7818677336306682469}
 --- !u!1 &6199666879610365180
 GameObject:
   m_ObjectHideFlags: 0

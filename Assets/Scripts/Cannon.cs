@@ -45,6 +45,7 @@ public class Cannon : MonoBehaviour
     public GameObject CarrotPrefab;
     public GameObject OnionPrefab;
     public GameObject TurnipPrefab;
+    public GameObject VeggieTrailPrefab;
 
     private bool canFire = true;
 
@@ -181,6 +182,8 @@ public class Cannon : MonoBehaviour
         animator.SetTrigger("Fire");
 
         GameObject shotObject = Instantiate(objPrefab, shootPoint.position, rotatePivot.rotation);
+        Instantiate(VeggieTrailPrefab, shotObject.transform);
+
         Rigidbody rigidbody = shotObject.GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
         rigidbody.AddForce(rotatePivot.forward * ShootForce, ForceMode.Impulse);
