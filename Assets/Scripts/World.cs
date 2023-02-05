@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class World : MonoBehaviour
 {
+    [HideInInspector]
     public float Speed;
 
     [SerializeField]
